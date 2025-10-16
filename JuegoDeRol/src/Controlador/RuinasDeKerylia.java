@@ -22,7 +22,7 @@ public class RuinasDeKerylia {
 	//Dinero/Griales	
 	static int grails = 0, earnedGrials = 0;
 	
-	static int points = 30;
+	static int points = 0;
 	
 	static Scanner sc = new Scanner(System.in);
 	
@@ -96,7 +96,7 @@ public class RuinasDeKerylia {
 			else {
 				System.out.println(" punto ");
 			}
-			System.out.println("de habilidad disponible ¿Quieres gastarlo (S)? ¿O volver al juego? (N)");
+			System.out.println("de habilidad disponible ¿Quieres gastar 1 (S)? ¿O volver al juego? (N)");
 			String input = sc.nextLine();
 			if (input.equalsIgnoreCase("S")) {
 				System.out.println("¿A que habilidad quieres sumarle 1 punto?");
