@@ -20,9 +20,14 @@ public class RuinasDeKerylia {
 	static int strength = 0, agility = 0, perception = 0, subtlety = 0, willpower = 0, charisma = 0, knowledge = 0, magic = 0;
 	
 	//Dinero/Griales	
-	static int grails = 0, earnedGrials = 0;
+	static int grails = 0, grailsToPoints = 0;
 	
 	static int points = 0;
+	
+	static boolean case1 = false, case2 = false, case3 = false, case4 = false, case5 = false;
+	
+	//Items de inventario
+	static int ropeItem = 0, picklock = 0;
 	
 	static Scanner sc = new Scanner(System.in);
 	
@@ -31,11 +36,22 @@ public class RuinasDeKerylia {
 		//⛖⛖⛖⛖⛖⛖⛖⛖FIN DE REGION⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖⛖
 	//endregion
 	
-	static void earned () {
-		if (earnedGrials >=10) {
-			earnedGrials -= 10;
+	static void earned (int earnedGrials) {
+		grails += earnedGrials;
+		grailsToPoints += earnedGrials;
+		
+		if (grailsToPoints >=10) {
+			grailsToPoints -= 10;
 			points ++;
 		}
+	}
+	
+	static void casesFalse() {
+		case1 = false;
+		case2 = false;
+		case3 = false;
+		case4 = false;
+		case5 = false;
 	}
 	
 	static void nonCode () {
@@ -187,6 +203,8 @@ public class RuinasDeKerylia {
 	}
 	
 	static void decision0(){
+		casesFalse();
+		
 		System.out.print("""
 				Despierta
 				El frío de la madrugada cala los huesos antes que el sol toque las murallas de Aurikaan.
@@ -252,15 +270,23 @@ public class RuinasDeKerylia {
 			decision = leerEntrada(sc);
 			switch (decision) {
 			case "1":
-				System.out.println("""
-						Rebuscas bajo el catre y entre los tablones sueltos de la mesa.
-						
-						No hay mucho, pero cada pequeño hallazgo importa:
-											
-						Un trozo de cuerda deshilachada, útil para improvisar herramientas.					
-						Una aguja de hueso, puede servir como ganzúa rudimentaria o para coser.					
-						Una orbe de griales de poco valor, pero suficiente para tentar a alguien desesperado.
-						""");
+				if (case1 = false) {
+					System.out.println("""
+							Rebuscas bajo el catre y entre los tablones sueltos de la mesa.
+							
+							No hay mucho, pero cada pequeño hallazgo importa:
+												
+							Un trozo de cuerda deshilachada, útil para improvisar herramientas.					
+							Una aguja de hueso, puede servir como ganzúa rudimentaria o para coser.					
+							Una orbe de griales de poco valor, pero suficiente para tentar a alguien desesperado.
+							""");
+					ropeItem ++; picklock ++;
+					earned(5);
+				}
+				else {
+					System.out.println("Rebuscas otra vez en caso de que te hayas dejado algo, pero no, esta vacio.");
+				}				
+				case1 = true;
 			break;
 			case "2":
 				System.out.println("""
@@ -288,7 +314,7 @@ public class RuinasDeKerylia {
 	} //Terminada
 	
 	static void decision1() {
-		
+		casesFalse();
 		
 		System.out.println("");
 		
@@ -327,7 +353,7 @@ public class RuinasDeKerylia {
 					El techo está hundido en algunas partes, pero la puerta está decorada con símbolos tallados en madera: 
 					círculos entrelazados y líneas torcidas que recuerdan a las grietas del cielo.
 					La puerta esta abierta, a Mirka nunca le molestaron las visitas.
-					Dentro, el aire huele a hierbas secas y humo. Mirka, la anciana, se mece en una silla junto al fuego. 
+					Dentro, el aire huele a hierbas secas y humo. Mirka, la anciana, se mece en una silla junto al fuego. 
 					Sus ojos parecen perderse más allá de las llamas, como si viera un mundo que los demás no pueden.
 					Sabe que estas ahí.
 					""");
@@ -343,6 +369,7 @@ public class RuinasDeKerylia {
 	}
 	
 	static void decision1_1() {
+		casesFalse();
 		
 		System.out.println();
 		
@@ -403,6 +430,8 @@ public class RuinasDeKerylia {
 	} 
 	
 	static void decision1_2() {
+		casesFalse();
+		
 		System.out.println("""
 				Mirka: '¿Que necesitas?'
 				""");
@@ -505,6 +534,7 @@ public class RuinasDeKerylia {
 	}
 	
 	static void decision2() {
+		casesFalse();
 		
 		System.out.println("""
 				El capataz os lo cuenta tras reuniros todos, hoy no es un día cualquiera: 
@@ -570,6 +600,8 @@ public class RuinasDeKerylia {
 	}
 	
 	static void decision3_a() {
+		casesFalse();
+		
 		System.out.println("""
 				Un carromato cargado de grano os lleva a varios campesinos hacia las puertas de Aurikaan.
 				El traqueteo de las ruedas acompaña rumores:
